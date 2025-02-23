@@ -1,18 +1,46 @@
 name: pull-request-review
 description: Review pull request code with AI
 author: remarkablemark
+
 inputs:
-  version:
-    description: Description
+  model:
+    description: Language model name
+    default: codellama 
     required: false
-    default: 1.2.3
+  prompt:
+    description: Input prompt before the PR diff
+    default: 'Code review the diff:'
+    required: false
+  comment-header:
+    description: Comment title in Markdown
+    default: '# Pull Request Review'
+    required: false
+  token:
+    description: GitHub token
+    required: false
+
 runs:
   using: composite
   steps:
-    - name: Print version
+    - name: Setup ollama
+      uses: ai-action/setup-ollama@v1
+
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Comment code review
       shell: bash
       run: |
-        echo 'version: ${{ inputs.version }}'
+        PROMPT_PREFIX=${{ toJSON(inputs.prompt) }}
+        PROMPT=$(printf '%s\n%s' "$PROMPT_PREFIX" $(gh pr diff $PR_NUMBER))
+        CODE_REVIEW=$(ollama run ${{ toJSON(inputs.model) }} "$PROMPT")
+        COMMENT_HEADER=${{ toJSON(inputs.comment-header) }}
+        COMMENT=$(printf '%s\n%s' "$COMMENT_HEADER" "$CODE_REVIEW")
+        gh pr comment $PR_NUMBER --body "$COMMENT"
+      env:
+        GITHUB_TOKEN: ${{ inputs.token || github.token }}
+        PR_NUMBER: ${{ github.event.pull_request.number }}
+
 branding:
-  icon: activity
-  color: white
+  icon: code
+  color: gray-dark

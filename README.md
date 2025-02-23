@@ -10,7 +10,7 @@
 
 ```yaml
 # .github/workflows/pr-review.yml
-on: push
+on: pull_request
 jobs:
   pr-review:
     runs-on: ubuntu-latest
@@ -21,6 +21,8 @@ jobs:
 
 ## Usage
 
+Add an AI code review comment to the pull request:
+
 ```yaml
 - uses: ai-action/pull-request-review@v1
 ```
@@ -29,14 +31,44 @@ See [action.yml](action.yml)
 
 ## Inputs
 
-### `version`
+### `model`
 
-**Optional**: The version. Defaults to `1.2.3`:
+**Optional**: The language [model](https://ollama.com/library) to use. Defaults to [codellama](https://ollama.com/library/codellama):
 
 ```yaml
 - uses: ai-action/pull-request-review@v1
   with:
-    version: 1.2.3
+    model: codellama
+```
+
+### `prompt`
+
+**Optional**: The input prompt that comes before the PR diff. Defaults to:
+
+```yaml
+- uses: ai-action/pull-request-review@v1
+  with:
+    prompt: 'Code review the diff:'
+```
+
+### `comment-header`
+
+**Optional**: The PR comment title in Markdown. Defaults to:
+
+```yaml
+- uses: ai-action/pull-request-review@v1
+  with:
+    comment-header: '# Pull Request Review'
+```
+
+### `token`
+
+**Optional**: The GitHub token. Defaults to `GITHUB_TOKEN`:
+
+```yaml
+- uses: ai-action/pull-request-review@v1
+  with:
+    token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ## License
