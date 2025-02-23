@@ -14,6 +14,9 @@ on: pull_request
 jobs:
   pr-review:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - name: PR review
         uses: ai-action/pull-request-review@v1
