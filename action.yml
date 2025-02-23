@@ -1,5 +1,5 @@
-name: github-actions-composite-template
-description: GitHub Actions Composite Template
+name: pull-request-review
+description: Review pull request code with AI
 author: remarkablemark
 inputs:
   version:
