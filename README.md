@@ -4,7 +4,7 @@
 [![test](https://github.com/ai-action/pull-request-review/actions/workflows/test.yml/badge.svg)](https://github.com/ai-action/pull-request-review/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-👀 Review pull request code with AI.
+👀 GitHub Action that reviews pull request code with AI and adds a PR comment.
 
 ## Quick Start
 
@@ -21,13 +21,11 @@ jobs:
 
 ## Usage
 
-Add an AI code review comment to the pull request:
+See [action.yml](action.yml):
 
 ```yaml
 - uses: ai-action/pull-request-review@v1
 ```
-
-See [action.yml](action.yml)
 
 ## Inputs
 
