@@ -21,8 +21,6 @@ jobs:
 
 ## Usage
 
-**Basic:**
-
 ```yaml
 - uses: ai-action/pull-request-review@v1
 ```
@@ -40,10 +38,6 @@ See [action.yml](action.yml)
   with:
     version: 1.2.3
 ```
-
-## Contributions
-
-Contributions are welcome! 👋
 
 ## License
 
