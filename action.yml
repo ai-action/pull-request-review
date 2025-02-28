@@ -17,6 +17,7 @@ inputs:
     required: false
   token:
     description: GitHub token
+    default: ${{ github.token }}
     required: false
 
 runs:
@@ -38,7 +39,7 @@ runs:
         COMMENT=$(printf '%s\n%s' "$COMMENT_HEADER" "$CODE_REVIEW")
         gh pr comment $PR_NUMBER --body "$COMMENT"
       env:
-        GITHUB_TOKEN: ${{ inputs.token || github.token }}
+        GH_TOKEN: ${{ inputs.token }}
         PR_NUMBER: ${{ github.event.pull_request.number }}
 
 branding:
