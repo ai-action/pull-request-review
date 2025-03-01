@@ -32,8 +32,7 @@ runs:
     - name: Comment code review
       shell: bash
       run: |
-        PROMPT_PREFIX=${{ toJSON(inputs.prompt) }}
-        PROMPT=$(printf '%s\n%s' "$PROMPT_PREFIX" $(gh pr diff $PR_NUMBER))
+        PROMPT=$(printf '%s\n%s' "$PROMPT" "$(gh pr diff $PR_NUMBER)")
         CODE_REVIEW=$(ollama run ${{ toJSON(inputs.model) }} "$PROMPT")
         COMMENT_HEADER=${{ toJSON(inputs.comment-header) }}
         COMMENT=$(printf '%s\n%s' "$COMMENT_HEADER" "$CODE_REVIEW")
@@ -41,6 +40,7 @@ runs:
       env:
         GH_TOKEN: ${{ inputs.token }}
         PR_NUMBER: ${{ github.event.pull_request.number }}
+        PROMPT: ${{ inputs.prompt }}
 
 branding:
   icon: code
