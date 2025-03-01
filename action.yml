@@ -33,12 +33,13 @@ runs:
       shell: bash
       run: |
         PROMPT=$(printf '%s\n%s' "$PROMPT" "$(gh pr diff $PR_NUMBER)")
-        CODE_REVIEW=$(ollama run ${{ toJSON(inputs.model) }} "$PROMPT")
-        COMMENT_HEADER=${{ toJSON(inputs.comment-header) }}
-        COMMENT=$(printf '%s\n%s' "$COMMENT_HEADER" "$CODE_REVIEW")
+        CODE_REVIEW=$(ollama run $MODEL "$PROMPT")
+        COMMENT=$(printf '%s\n\n%s' "$COMMENT" "$CODE_REVIEW")
         gh pr comment $PR_NUMBER --body "$COMMENT"
       env:
+        COMMENT: ${{ inputs.comment-header }}
         GH_TOKEN: ${{ inputs.token }}
+        MODEL: ${{ inputs.model }}
         PR_NUMBER: ${{ github.event.pull_request.number }}
         PROMPT: ${{ inputs.prompt }}
 
