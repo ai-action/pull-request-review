@@ -1,5 +1,5 @@
 name: pull-request-review
-description: Review pull request code with AI
+description: Review pull requests with AI (LLM)
 author: remarkablemark
 
 inputs:
