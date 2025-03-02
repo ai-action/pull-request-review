@@ -4,7 +4,7 @@
 [![test](https://github.com/ai-action/pull-request-review/actions/workflows/test.yml/badge.svg)](https://github.com/ai-action/pull-request-review/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-👀 GitHub Action that reviews pull request code with AI and adds a PR comment.
+👀 GitHub Action that reviews pull requests with AI (LLM).
 
 ## Quick Start
 
@@ -24,11 +24,13 @@ jobs:
 
 ## Usage
 
-See [action.yml](action.yml):
+Review PR diff and add a comment:
 
 ```yaml
 - uses: ai-action/pull-request-review@v1
 ```
+
+See [action.yml](action.yml).
 
 ## Inputs
 
