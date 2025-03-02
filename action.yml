@@ -5,7 +5,7 @@ author: remarkablemark
 inputs:
   model:
     description: Language model name
-    default: codellama 
+    default: codellama
     required: false
   prompt:
     description: Input prompt before the PR diff
