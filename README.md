@@ -1,6 +1,6 @@
 # pull-request-review
 
-[![version](https://badgen.net/github/release/ai-action/pull-request-review)](https://github.com/ai-action/pull-request-review/releases)
+[![version](https://img.shields.io/github/release/ai-action/pull-request-review)](https://github.com/ai-action/pull-request-review/releases)
 [![test](https://github.com/ai-action/pull-request-review/actions/workflows/test.yml/badge.svg)](https://github.com/ai-action/pull-request-review/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
