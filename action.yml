@@ -27,7 +27,7 @@ runs:
       uses: ai-action/setup-ollama@v1
 
     - name: Checkout repository
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
 
     - name: Comment code review
       shell: bash
