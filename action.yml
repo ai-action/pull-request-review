@@ -24,7 +24,7 @@ runs:
   using: composite
   steps:
     - name: Setup ollama
-      uses: ai-action/setup-ollama@v2
+      uses: ai-action/setup-ollama@v2.0.64
 
     - name: Checkout repository
       uses: actions/checkout@v7
